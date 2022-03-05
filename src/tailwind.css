@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.logo:before {
+  position: relative;
+  content: "";
+  width: 0;
+  height: 30px;
+  left: -10px;
+  top: 0;
+  border-left: 1px solid #b0bdc0;
+}

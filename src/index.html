@@ -11,7 +11,7 @@
 <body class="bg-sky-50 flex flex-col min-h-screen" id="body"
 x-data="{ loginopen: false }"
 >
-  <header class="bg-white border-t-4 border-t-laurispink-700 border-b-[1px] border-b-gray-100 w-full min-h-[69px] flex items-center p-4">
+  <header class="bg-white dark:bg-slate-900 border-t-4 border-t-laurispink-700 dark:border-t-flamingo-400 border-b-[1px] border-b-gray-100 w-full min-h-[69px] flex items-center p-4">
     <div class="flex w-full">
       <!-- Logo Panel -->
       <a href="/main.html" class="flex-1 flex flex-row items-center">
@@ -20,7 +20,7 @@ x-data="{ loginopen: false }"
               d="M24.484 67.402 C25.905 64.915 45.439 37.879 47.5 21.901 49.245 8.373 35.861 1.175 27.204 18.329 17.199 38.158 22.009 75.157 22.284 78.889 22.923 87.571 26.434 88.259 28.286 88.259 37.987 88.259 45.292 74.112 46.98 71.335 47.402 70.642 50.118 66.656 51.704 66.836 57.361 67.484 63.003 82.015 68.87 82.015 69.583 82.015 72.524 82.691 75.925 79.295 79.616 75.604 82.107 70.691 82.107 70.691 82.107 70.691 85.892 60.761 74.851 74.919 71.18 79.627 68.521 79.061 63.38 71.974 61.184 68.946 56.825 61.764 51.544 61.4 47.431 61.4 42.559 69.675 42.531 69.712 36.881 78.004 37.59 77.079 36.144 78.717 34.431 80.663 31.559 82.888 29.117 82.507 28.843 82.462 27.778 82.294 27.053 79.205 25.545 72.81 24.57 60.695 24.648 58.376 25.565 31.324 30.039 17.845 35.943 14.228 45.001 8.676 43.022 21.807 41.449 26.887 36.844 41.763 12.078 77.959 8.067 86.587 6.142 90.729 10.673 90.676 10.673 89.763"
               fill="#f34e3a" fill-opacity="1" stroke="#f34e3a" stroke-width="5.42" stroke-opacity="1" stroke-linejoin="round" stroke-linecap="round" />
           </svg>
-          <h1 class="items-center flex flex-1 border-l border-slate-200 ml-2 pl-2 text-xl text-slate-800 font-semibold">Lauris RausZeit</h1>
+          <h1 class="items-center flex flex-1 border-l border-slate-200 ml-2 pl-2 text-xl text-slate-800 dark:text-slate-200 font-semibold">Lauris RausZeit</h1>
     </a>
       <!-- Nav Right Panel -->
       <div class="relative flex items-center ml-auto">
@@ -38,14 +38,14 @@ x-data="{ loginopen: false }"
           </ul>
         </nav>
         <!-- Account -->
-        <div  class="relative -mr-1.5 sm:mr-0  lg:border-l lg:border-slate-200 lg:ml-6 lg:pl-6 dark:border-slate-800"
+        <div  class="relative -mr-1.5 sm:mr-0  lg:border-l lg:border-slate-200 lg:ml-6 lg:pl-6 dark:border-slate-200"
         x-data="{ open: false }" x-init="window.addEventListener('focus', event => { if (open &amp;&amp; !$el.contains(event.target)) open = false }, true)" @click.away="open = false" @keydown.escape="open = false;$refs.toggle.focus()"
         >
           <button type="button" class="font-medium text-sm flex items-center outline-none" aria-expanded="true" 
           x-ref="toggle" @click="open = !open" :aria-expanded="open">
-            <span class="hidden sm:flex items-center">
+            <span class="hidden sm:flex items-center dark:text-slate-200">
               Account
-              <svg aria-hidden="true" width="8" height="6" fill="none" class="ml-2.5 text-gray-400">
+              <svg aria-hidden="true" width="8" height="6" fill="none" class="ml-2.5 text-gray-400 dark:text-slate-200">
                 <path d="M7 1.5l-3 3-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </span>
@@ -130,15 +130,14 @@ x-data="{ loginopen: false }"
     </div>
   </header>
   <!-- Main Content -->
-  <main class="flex-1 flex items-start md:items-center px-2 md:px-4 py-4">
+  <main class="dark:bg-slate-900 flex-1 flex items-start md:items-center px-2 md:px-4 py-4">
     <div class="grid grid-cols-1 md:grid-cols-8 w-full">
       <!-- Login Column -->
       <div class="md:col-start-2 md:col-end-8 2lg:col-start-3 2lg:col-end-7  p-8 rounded-lg bg-white flex flex-col">
         <h2 class="text-2xl md:text-3xl font-semibold text-slate-800 leading-8 md:leading-10">Welcome to Lauris RausZeit</h2>
         <span class="text-sm text-gray-500 mt-4">
           Please enter your email and password. For more information
-          <a href="#" class="underline text-flamingo-400 hover:text-flamingo-500">click here</a>
-          .
+          <a href="#" class="underline text-flamingo-400 hover:text-flamingo-500">click here</a>.
         </span>
         <form @submit.prevent="loginopen = !loginopen">
           <div class="form-group my-6">
@@ -173,6 +172,21 @@ x-data="{ loginopen: false }"
       </div>
     </div>
   </main>
+
+  <footer class="bg-white dark:bg-black transition-all relative">
+    
+    
+        <div class="py-2 px-4 flex justify-between items-center">
+                <nav class="-mx-4">
+                            <a class=" dark:hover:text-primary hover:text-primary font-medium px-4 font-medium text-gray-400 dark:text-gray-600 text-sm transition-all" href="/privacy/">Data &amp; privacy</a>
+        <a class=" dark:hover:text-primary hover:text-primary font-medium px-4 font-medium text-gray-400 dark:text-gray-600 text-sm transition-all" href="/contact/">Contact</a>
+        <a class=" dark:hover:text-primary hover:text-primary font-medium px-4 font-medium text-gray-400 dark:text-gray-600 text-sm transition-all" href="/contribute/">Contribute →</a>
+
+                </nav>
+            <p class="font-medium text-gray-400 text-sm dark:text-gray-600 mt-4 lg:mt-0">ratzfatzmats © 2022. All Rights reserved.</p>
+        </div>
+    
+</footer>
 
   <!-- This example requires Tailwind CSS v2.0+ -->
   <div id="modal" class="hidden fixed z-40 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">

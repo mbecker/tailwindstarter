@@ -8,6 +8,7 @@
     "watch:dev": "npx tailwindcss -i ./src/tailwind.css -o ./dist/tailwind.css --watch --minify",
     "watch": "run-p build:css sync",
     "build:css": "postcss src/tailwind.css -o src/styles.min.css --watch",
+    "prod:css": "postcss src/tailwind.css -o src/styles.min.css",
     "watch:build": "watch 'npm run build:css' ./src"
   },
   "author": "",

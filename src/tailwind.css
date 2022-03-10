@@ -49,5 +49,5 @@ h3 {
 }
 
 p {
-  @apply text-xs mb-1;
+  @apply text-xs mb-1 break-all;
 }

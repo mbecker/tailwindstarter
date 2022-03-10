@@ -43,3 +43,11 @@ input[type=range]::-webkit-slider-runnable-track {
   @apply bg-gray-300;
   border-radius: 0.5rem;
 }
+
+h3 {
+  @apply text-sm font-semibold mt-4 mb-1;
+}
+
+p {
+  @apply text-xs mb-1;
+}

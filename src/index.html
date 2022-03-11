@@ -25,7 +25,7 @@
 
 </head>
 
-<body class="flex flex-col items-center justify-center w-screen bg-slate-800 text-gray-500" x-data="page()">
+<body class="flex flex-col items-center justify-center w-screen bg-slate-800 text-gray-500" x-data="page()" x-init="handleTick(14);">
   <!-- Component Start -->
   <div class="flex flex-col items-center bg-gray-900 shadow-lg rounded-2xl px-6 py-10 text-gray-100 w-full max-w-sm">
     <div class="flex items-center justify-center w-60 h-40 bg-cover bg-bottom rounded-xl mt-8">
@@ -76,14 +76,14 @@
     </div>
     <h2 class="font-semibold mt-2 text-2xl">oauth.digital</h2>
     <h3 class="text-xs font-thin text-gray-400 font-mono">authn/z as a service</h3>
-    <div class="flex items-center w-full mt-10">
-      <span class="text-xs text-gray-400" hidden>2:12</span>
-      <input class="flex-grow mx-4" type="range" min="0" max="360" x-model="total_value" step="1">
+    <div class="flex items-center w-full mt-10 hidden">
+      <span class="text-xs text-gray-400 hidden">2:12</span>
+      <input class="flex-grow mx-4 hidden" type="range" min="0" max="360" x-model="total_value" step="1">
       <span class="text-xs text-gray-400 hidden">4:28</span>
     </div>
-    <div class="flex items-center mt-10 space-x-3">
+    <div class="flex items-center mt-4 space-x-3 hidden">
       <button @click="handleRefresh">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 hover:text-gray-100" viewBox="0 0 20 20" fill="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 hover:text-gray-100" viewBox="0 0 20 20" fill="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
             d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
             clip-rule="evenodd" />
@@ -95,9 +95,12 @@
     <a href="/privacy.html" class="text-gray-200 hover:text-gray-100 text-xs font-thin">Data Privacy</a>
   </footer>
   <!-- Component End  -->
-  <script src="//unpkg.com/alpinejs" defer></script>
-  <script async defer data-website-id="4fc93364-ab22-4fbf-8da2-5b2d96f42aad" src="https://umami.ratzfatzmats.de/umami.js"></script>
+  
   <script type="text/javascript">
+    console.log("hi");
+    
+    
+
     const c = {
       0: { 3: '#cbd5e1', 4: '#94a3b8', 5: '#64748b' },
       1: { 3: '#d1d5db', 4: '#9ca3af', 5: '#6b7280' },
@@ -121,7 +124,7 @@
       19: { 3: '#f0abfc', 4: '#e879f9', 5: '#d946ef' },
       20: { 3: '#f9a8d4', 4: '#f472b6', 5: '#ec4899' },
       21: { 3: '#fda4af', 4: '#fb7185', 5: '#f43f5e' },
-    }
+    };
     const colorkeys = Object.keys(c);
     const getStopColors = function () {
       let colors = [];
@@ -138,9 +141,21 @@
     function page() {
       return {
         total_value: 180,
+        handleTick(t) {
+          setTimeout(() => {
+            if(this.total_value > 360) {
+              this.total_value = t;
+            }
+            this.total_value = this.total_value + t;
+            this.handleRefresh(undefined);
+            this.handleTick(t);
+          }, 100)
+        },
         handleRefresh(e) {
-          e.preventDefault();
-          this.total_value = 180;
+          if(typeof e !== "undefined"){
+            e.preventDefault();
+          }
+          // this.total_value = 180;
           const stopColors = getStopColors();
           for (let index = 0; index < stopColors.length; index++) {
             const element = stopColors[index];
@@ -152,7 +167,8 @@
       }
     }
 
-
   </script>
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <script async defer data-website-id="4fc93364-ab22-4fbf-8da2-5b2d96f42aad" src="https://umami.ratzfatzmats.de/umami.js"></script>
 
 </html>

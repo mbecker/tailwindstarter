@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -95,11 +94,11 @@
     <a href="/privacy.html" class="text-gray-200 hover:text-gray-100 text-xs font-thin">Data Privacy</a>
   </footer>
   <!-- Component End  -->
-  
+
   <script type="text/javascript">
     console.log("hi");
-    
-    
+
+
 
     const c = {
       0: { 3: '#cbd5e1', 4: '#94a3b8', 5: '#64748b' },
@@ -143,16 +142,16 @@
         total_value: 180,
         handleTick(t) {
           setTimeout(() => {
-            if(this.total_value > 360) {
+            if (this.total_value > 360) {
               this.total_value = t;
             }
-            this.total_value = this.total_value + t;
+            // this.total_value = this.total_value + t;
             this.handleRefresh(undefined);
             this.handleTick(t);
-          }, 100)
+          }, 750)
         },
         handleRefresh(e) {
-          if(typeof e !== "undefined"){
+          if (typeof e !== "undefined") {
             e.preventDefault();
           }
           // this.total_value = 180;

@@ -1,0 +1,44 @@
+{{define "_scripts"}}
+<script src="/dist/colors.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+
+  function authenticate(type, service) {
+    console.log(type, service)
+    // Make a request for a user with a given ID
+    axios.get('/authlink/' + type + '/' + service)
+      .then((response) => {
+        console.log("--- Response ---");
+        console.log(response.data)
+        window.location.href = response.data
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  function handleLogin(e) {
+    e.preventDefault();
+    loginopen = !loginopen;
+    if (e.classList.contains("animate-pulse")) {
+      e.classList.remove("animate-pulse");
+    } else {
+      e.classList.add("animate-pulse");
+    }
+  };
+
+
+  /* Add Colors Palette */
+  let colorspalette = document.getElementById("colorspalette");
+  addColors(colorspalette);
+  let modal = document.getElementById("modal");
+  function updateModal() {
+    if (modal.classList.contains("hidden")) {
+      modal.classList.remove("hidden");
+    } else {
+      modal.classList.add("hidden");
+    }
+  }
+</script>
+<script src="//unpkg.com/alpinejs" defer></script>
+{{end}}

@@ -8,126 +8,10 @@
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 </head>
 
-<body class="bg-white flex flex-col min-h-screen" id="body">
-  <header class="bg-white border-t-4 border-t-laurispink-700 border-b-[1px] border-b-gray-100 w-full min-h-[69px] flex items-center p-4">
-    <div class="flex w-full">
-      <!-- Logo Panel -->
+<body class="bg-white flex flex-col min-h-screen" id="body" x-data="{ showColorPalette: false }">
 
-      <a href="/" class="flex-1 flex flex-row items-center">
-        <svg class="w-12 h-12" viewBox="0 0 91 98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
-          <path id="Path-copy"
-            d="M24.484 67.402 C25.905 64.915 45.439 37.879 47.5 21.901 49.245 8.373 35.861 1.175 27.204 18.329 17.199 38.158 22.009 75.157 22.284 78.889 22.923 87.571 26.434 88.259 28.286 88.259 37.987 88.259 45.292 74.112 46.98 71.335 47.402 70.642 50.118 66.656 51.704 66.836 57.361 67.484 63.003 82.015 68.87 82.015 69.583 82.015 72.524 82.691 75.925 79.295 79.616 75.604 82.107 70.691 82.107 70.691 82.107 70.691 85.892 60.761 74.851 74.919 71.18 79.627 68.521 79.061 63.38 71.974 61.184 68.946 56.825 61.764 51.544 61.4 47.431 61.4 42.559 69.675 42.531 69.712 36.881 78.004 37.59 77.079 36.144 78.717 34.431 80.663 31.559 82.888 29.117 82.507 28.843 82.462 27.778 82.294 27.053 79.205 25.545 72.81 24.57 60.695 24.648 58.376 25.565 31.324 30.039 17.845 35.943 14.228 45.001 8.676 43.022 21.807 41.449 26.887 36.844 41.763 12.078 77.959 8.067 86.587 6.142 90.729 10.673 90.676 10.673 89.763"
-            fill="#f34e3a" fill-opacity="1" stroke="#f34e3a" stroke-width="5.42" stroke-opacity="1" stroke-linejoin="round" stroke-linecap="round" />
-        </svg>
-        <h1 class="items-center flex flex-1 border-l border-slate-200 ml-2 pl-2 text-xl text-slate-800 font-semibold">Lauris RausZeit</h1>
-      </a>
+  {{template "_header" . }}
 
-      <!-- Nav Right Panel -->
-      <div class="relative flex items-center ml-auto">
-        <nav class="hidden lg:inline-block text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
-          <ul class="flex space-x-8">
-            <li>
-              <a class="hover:text-flamingo-500 dark:hover:text-flamingo-400" href="#" onclick="updateModal();">Colors</a>
-            </li>
-            <li>
-              <a href="https://tailwindui.com" class="hover:text-flamingo-500 dark:hover:text-flamingo-400">Components</a>
-            </li>
-            <li>
-              <a class="hover:text-flamingo-500 dark:hover:text-flamingo-400" href="/blog">Blog</a>
-            </li>
-          </ul>
-        </nav>
-        <!-- Account -->
-        <div class="relative -mr-1.5 sm:mr-0  lg:border-l lg:border-slate-200 lg:ml-6 lg:pl-6 dark:border-slate-800" x-data="{ open: false }"
-          x-init="window.addEventListener('focus', event => { if (open &amp;&amp; !$el.contains(event.target)) open = false }, true)" @click.away="open = false" @keydown.escape="open = false;$refs.toggle.focus()">
-          <button type="button" class="font-medium text-sm flex items-center outline-none" aria-expanded="true" x-ref="toggle" @click="open = !open" :aria-expanded="open">
-            <span class="hidden sm:flex items-center">
-              Account
-              <svg aria-hidden="true" width="8" height="6" fill="none" class="ml-2.5 text-gray-400">
-                <path d="M7 1.5l-3 3-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </span>
-            <span class="flex sm:hidden -my-1 w-8 h-8 rounded-lg items-center justify-center">
-              <svg aria-hidden="true" width="20" height="20" fill="none" class="text-gray-900">
-                <path d="M3.75 4.75h12.5M3.75 9.75h12.5M3.75 14.75h12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-            </span>
-          </button>
-          <!-- Account Modal -->
-          <div x-show="open"
-            class="z-10 absolute top-full right-0 w-60 mt-3 -mr-0.5 sm:-mr-3.5 bg-white rounded-lg shadow-md ring-1 ring-gray-900 ring-opacity-5 font-normal text-sm text-gray-900 divide-y divide-gray-100">
-            <p class="py-3 px-3.5 truncate">
-              <span class="block mb-0.5 text-xs text-gray-500">Signed in as</span>
-              <span class="font-semibold">mats.becker@gmail.com</span>
-            </p>
-            <div class="py-1.5 px-3.5">
-              <a href="/upgrade-team" class="group flex items-center py-1.5 hover:text-flamingo-600">
-                <svg aria-hidden="true" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-none mr-3 text-gray-400 group-hover:text-flamingo-600">
-                  <rect x="4.75" y="6.75" width="4.5" height="4.5" rx="2.25" stroke="#9CA3AF" stroke-width="1.5"></rect>
-                  <rect x="10.75" y="2.75" width="4.5" height="4.5" rx="2.25" stroke="#9CA3AF" stroke-width="1.5"></rect>
-                  <path
-                    d="M11.179 16.52c-.854-1.416-2.035-2.77-4.171-2.77s-3.318 1.353-4.171 2.77a.484.484 0 00.425.73h7.492c.379 0 .62-.406.425-.73zM12.75 9.75c2.14 0 3.51 1.358 4.418 2.776.204.32-.035.724-.414.724H12.75"
-                    stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"></path>
-                </svg>
-                Upgrade to Team License
-              </a>
-            </div>
-            <div class="py-1.5 px-3.5">
-              <a href="/account-settings" class="group flex items-center py-1.5 hover:text-flamingo-600">
-                <svg aria-hidden="true" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" class="flex-none mr-3 text-gray-400 group-hover:text-flamingo-600">
-                  <rect x="7.75" y="5.75" width="4.5" height="4.5" rx="2.25"></rect>
-                  <rect x="2.75" y="2.75" width="14.5" height="14.5" rx="7.25"></rect>
-                  <path d="M14.618 15.5A5.249 5.249 0 0010 12.75a5.249 5.249 0 00-4.618 2.75"></path>
-                </svg>
-                Account Settings
-              </a>
-              <form method="POST" action="https://tailwindui.com/logout">
-                <input type="hidden" name="_token" value="6oKmfe3lDvWr88WpZkaccSopgIMi67n5OIcZkThr" />
-                <button type="submit" class="group flex w-full items-center py-1.5 text-gray-900 hover:text-flamingo-600">
-                  <svg aria-hidden="true" width="20" height="20" fill="none" class="flex-none mr-3 text-gray-400 group-hover:text-flamingo-600">
-                    <path d="M10.25 3.75H9A6.25 6.25 0 002.75 10v0A6.25 6.25 0 009 16.25h1.25M10.75 10h6.5M14.75 12.25l2.5-2.25-2.5-2.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                      stroke-linejoin="round"></path>
-                  </svg>
-                  Sign out
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <!-- Account End -->
-        <div class="hidden lg:flex items-center border-l border-slate-200 ml-6 pl-6 dark:border-slate-800">
-          <label class="sr-only" id="headlessui-listbox-label-15">Theme</label>
-          <button type="button" id="headlessui-listbox-button-16" aria-haspopup="true" aria-expanded="false" aria-labelledby="headlessui-listbox-label-15 headlessui-listbox-button-16">
-            <span class="dark:hidden">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
-                <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" class="fill-flamingo-400/20 stroke-flamingo-500"></path>
-                <path d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836" class="stroke-flamingo-500"></path>
-              </svg>
-            </span>
-            <span class="hidden dark:inline">
-              <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"
-                  class="fill-flamingo-400/20"></path>
-                <path
-                  d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z"
-                  class="fill-flamingo-500"></path>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z"
-                  class="fill-flamingo-500"></path>
-              </svg>
-            </span>
-          </button>
-          <a href="https://github.com/tailwindlabs/tailwindcss" class="ml-6 block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300">
-            <span class="sr-only">Tailwind CSS on GitHub</span>
-            <svg viewBox="0 0 16 16" class="w-5 h-5" fill="currentColor" aria-hidden="true">
-              <path
-                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
-              </path>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
   <!-- Main Content -->
   <main class="flex-1 relative">
 
@@ -139,32 +23,52 @@
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex flex-col flex-grow bg-sky-50 overflow-y-auto">
 
-        <div class="mt-5 flex-1 flex flex-col">
-          <nav class="flex-1 px-4 pb-4 space-y-0" x-data="{ menus: ['Dashboard', 'Clients', 'Users'] }">
+
+        <div class="mt-5 flex-1 flex flex-col px-4">
+          <div class="mb-6">
+            <div class="relative"><button
+                class="focus-visible:outline-none focus-visible:ring flex items-center justify-between w-full px-3 py-[9px] rounded-lg bg-gray-800"
+                id="headlessui-menu-button-3" type="button" aria-haspopup="true" aria-expanded="false"><span
+                  class="text-sm font-medium text-white">React</span><svg xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-gray-400">
+                  <path fill-rule="evenodd"
+                    d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg></button>
+              <div class="w-full" data-popper-reference-hidden="false" data-popper-escaped="false"
+                data-popper-placement="bottom-start"
+                style="position: absolute; inset: 0px auto auto 0px; transform: translate(0px, 44px);"></div>
+            </div>
+          </div>
+          <nav class="flex-1  pb-4 space-y-0" x-data="{ menus: ['Dashboard', 'Clients', 'Users'] }">
 
             <template x-for="menu in menus">
-              <a class="flex items-center w-full h-12 px-3 mt-2 rounded text-laurisgrey-800 hover:text-viking-900 hover:bg-sky-100" href="#">
-                <svg class="mr-2 w-6 h-6 text-laurisgrey-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <a class="flex items-center w-full h-12 px-3 mt-2 rounded-lg text-laurisgrey-800 hover:text-viking-900 hover:bg-sky-100"
+                href="#">
+                <svg class="mr-2 w-6 h-6 text-laurisgrey-400" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
-                <span class="ml-2 text-sm font-normal" x-text="menu"></span>
+                <span class="ml-2 text-sm font-medium" x-text="menu"></span>
               </a>
             </template>
 
           </nav>
-          <a class="flex items-center justify-center w-full h-16 mt-auto bg-sky-100 hover:bg-sky-200 text-black hover:text-gray-700" href="#">
-            <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <a class="flex items-center justify-center w-full h-16 mt-auto bg-sky-100 hover:bg-sky-200 text-black hover:text-gray-700"
+            href="#">
+            <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span class="ml-2 text-sm font-normal">Account</span>
+            <span class="ml-2 text-sm font-semibold">Account</span>
           </a>
+
         </div>
       </div>
     </div>
     <div class="md:pl-56 2lg:pl-64 flex flex-col flex-1">
-
-
       <main>
         <div class="py-6">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -183,530 +87,10 @@
 
   </main>
 
-  <!-- This example requires Tailwind CSS v2.0+ -->
-  <div id="modal" class="hidden fixed z-40 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="flex items-start justify-start min-h-screen pt-0 px-0 pb-0 sm:block sm:p-0">
-      <!--
-        Background overlay, show/hide based on modal state.
-  
-        Entering: "ease-out duration-300"
-          From: "opacity-0"
-          To: "opacity-100"
-        Leaving: "ease-in duration-200"
-          From: "opacity-100"
-          To: "opacity-0"
-      -->
-      <div class="fixed inset-0 bg-transparent transition-opacity" id="overlay" aria-hidden="true"></div>
-
-      <!-- This element is to trick the browser into centering the modal contents. -->
-
-      <!--
-        Modal panel, show/hide based on modal state.
-  
-        Entering: "ease-out duration-300"
-          From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          To: "opacity-100 translate-y-0 sm:scale-100"
-        Leaving: "ease-in duration-200"
-          From: "opacity-100 translate-y-0 sm:scale-100"
-          To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-      -->
-
-      <div class="absolute inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-0 sm:align-middle sm:max-w-xl sm:w-full">
-        <div class="bg-white px-4 py-8">
-          <div class="flex sticky top-0 left-0 w-full">
-            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Colors</h3>
-            <div class="flex-1 flex justify-end">
-              <button id="removestyle"
-                class="px-4 py-2 bg-viking-500 text-slate-800 font-medium text-sm leading-tight uppercase hover:bg-viking-400 focus:bg-viking-400 focus:outline-none focus:ring-0 active:bg-viking-400">
-                Remove style
-              </button>
-            </div>
-          </div>
-
-          <div class="mt-2" id="colorspalette"></div>
-        </div>
-        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-          <button type="button" onclick="updateModal();"
-            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-slate-800 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
-            Deactivate
-          </button>
-          <button type="button" onclick="updateModal();"
-            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-            Cancel
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+{{template "_colorspalette"}}
 
 
 </body>
-<script type="text/javascript">
-  let animatePulse = document.getElementById("animatePulse");
-  animatePulse.onclick = function (e) {
-    e.preventDefault();
-    if (this.classList.contains("animate-pulse")) {
-      this.classList.remove("animate-pulse");
-    } else {
-      this.classList.add("animate-pulse");
-    }
-  };
-
-  let modal = document.getElementById("modal");
-  let colorspalette = document.getElementById("colorspalette");
-  let overlay = document.getElementById("overlay");
-  let b = document.getElementById("body");
-  let removestyle = document.getElementById("removestyle");
-  removestyle.onclick = function (e) {
-    e.preventDefault();
-    b.style = "";
-  };
-
-  overlay.onclick = function (e) {
-    e.preventDefault();
-    updateModal();
-  };
-
-  function updateModal() {
-    if (modal.classList.contains("hidden")) {
-      modal.classList.remove("hidden");
-    } else {
-      modal.classList.add("hidden");
-    }
-  }
-
-  function updateBody(hex) {
-    console.log("Apply hex color to boddY: " + hex);
-    b.style = `background-color: ${hex}`;
-  }
-
-  let colors = {
-    sant: {
-      500: "#9e3667",
-    },
-    viking: {
-      DEFAULT: "#65B9D5",
-      50: "#F5FBFC",
-      100: "#E5F3F8",
-      200: "#C5E5EF",
-      300: "#A5D6E6",
-      400: "#85C8DE",
-      500: "#65B9D5",
-      600: "#39A5C9",
-      700: "#2B829F",
-      800: "#1F5E72",
-      900: "#133A46",
-    },
-    polar: {
-      DEFAULT: "#E9F5F9",
-      50: "#FFFFFF",
-      100: "#FFFFFF",
-      200: "#FFFFFF",
-      300: "#FFFFFF",
-      400: "#FFFFFF",
-      500: "#E9F5F9",
-      600: "#BDE1ED",
-      700: "#91CDE1",
-      800: "#65B9D5",
-      900: "#39A5C9",
-    },
-
-    lauri: {
-      300: "#DF8378",
-      400: "#F34E3A",
-      500: "#F34E36",
-      600: "#A63428",
-      700: "#593430",
-    },
-    biscay: {
-      DEFAULT: "#1F4B6C",
-      50: "#6DA9D5",
-      100: "#5E9FD1",
-      200: "#3E8DC8",
-      300: "#3177AB",
-      400: "#28618C",
-      500: "#1F4B6C",
-      600: "#122D40",
-      700: "#060E15",
-      800: "#000000",
-      900: "#000000",
-    },
-    laurisfirefly: {
-      DEFAULT: "#0D1F2D",
-      50: "#3681BB",
-      100: "#3276AC",
-      200: "#28608C",
-      300: "#1F4B6C",
-      400: "#16354D",
-      500: "#0D1F2D",
-      600: "#000101",
-      700: "#000000",
-      800: "#000000",
-      900: "#000000",
-    },
-    laurislate: {
-      500: "#0D1F2D",
-    },
-    laurisgrey: {
-      DEFAULT: "#546A7B",
-      50: "#B8C5CF",
-      100: "#ACBBC6",
-      200: "#94A7B6",
-      300: "#7B93A5",
-      400: "#657F93",
-      500: "#546A7B",
-      600: "#3D4D5A",
-      700: "#263138",
-      800: "#101417",
-      900: "#000000",
-    },
-    laurisgray: {
-      DEFAULT: "#9EA3B0",
-      50: "#FFFFFF",
-      100: "#F8F8F9",
-      200: "#E1E3E7",
-      300: "#CBCED5",
-      400: "#B4B8C2",
-      500: "#9EA3B0",
-      600: "#7F8697",
-      700: "#646A7A",
-      800: "#4A4F5B",
-      900: "#31343C",
-    },
-    laurispink: {
-      DEFAULT: "#FAE1DF",
-      50: "#FFFFFF",
-      100: "#FFFFFF",
-      200: "#FFFFFF",
-      300: "#FFFFFF",
-      400: "#FFFFFF",
-      500: "#FAE1DF",
-      600: "#F2B4AE",
-      700: "#EB867E",
-      800: "#E3594D",
-      900: "#D72F22",
-    },
-    flamingo: {
-      DEFAULT: "#F34E3A",
-      50: "#FEE9E7",
-      100: "#FCD8D4",
-      200: "#FAB6AD",
-      300: "#F89387",
-      400: "#F57160",
-      500: "#F34E3A",
-      600: "#E7250E",
-      700: "#B21D0B",
-      800: "#7D1408",
-      900: "#480C04",
-    },
-    slate: {
-      50: "#f8fafc",
-      100: "#f1f5f9",
-      200: "#e2e8f0",
-      300: "#cbd5e1",
-      400: "#94a3b8",
-      500: "#64748b",
-      600: "#475569",
-      700: "#334155",
-      800: "#1e293b",
-      900: "#0f172a",
-    },
-    gray: {
-      50: "#f9fafb",
-      100: "#f3f4f6",
-      200: "#e5e7eb",
-      300: "#d1d5db",
-      400: "#9ca3af",
-      500: "#6b7280",
-      600: "#4b5563",
-      700: "#374151",
-      800: "#1f2937",
-      900: "#111827",
-    },
-    zinc: {
-      50: "#fafafa",
-      100: "#f4f4f5",
-      200: "#e4e4e7",
-      300: "#d4d4d8",
-      400: "#a1a1aa",
-      500: "#71717a",
-      600: "#52525b",
-      700: "#3f3f46",
-      800: "#27272a",
-      900: "#18181b",
-    },
-    neutral: {
-      50: "#fafafa",
-      100: "#f5f5f5",
-      200: "#e5e5e5",
-      300: "#d4d4d4",
-      400: "#a3a3a3",
-      500: "#737373",
-      600: "#525252",
-      700: "#404040",
-      800: "#262626",
-      900: "#171717",
-    },
-    stone: {
-      50: "#fafaf9",
-      100: "#f5f5f4",
-      200: "#e7e5e4",
-      300: "#d6d3d1",
-      400: "#a8a29e",
-      500: "#78716c",
-      600: "#57534e",
-      700: "#44403c",
-      800: "#292524",
-      900: "#1c1917",
-    },
-    red: {
-      50: "#fef2f2",
-      100: "#fee2e2",
-      200: "#fecaca",
-      300: "#fca5a5",
-      400: "#f87171",
-      500: "#ef4444",
-      600: "#dc2626",
-      700: "#b91c1c",
-      800: "#991b1b",
-      900: "#7f1d1d",
-    },
-    orange: {
-      50: "#fff7ed",
-      100: "#ffedd5",
-      200: "#fed7aa",
-      300: "#fdba74",
-      400: "#fb923c",
-      500: "#f97316",
-      600: "#ea580c",
-      700: "#c2410c",
-      800: "#9a3412",
-      900: "#7c2d12",
-    },
-    amber: {
-      50: "#fffbeb",
-      100: "#fef3c7",
-      200: "#fde68a",
-      300: "#fcd34d",
-      400: "#fbbf24",
-      500: "#f59e0b",
-      600: "#d97706",
-      700: "#b45309",
-      800: "#92400e",
-      900: "#78350f",
-    },
-    yellow: {
-      50: "#fefce8",
-      100: "#fef9c3",
-      200: "#fef08a",
-      300: "#fde047",
-      400: "#facc15",
-      500: "#eab308",
-      600: "#ca8a04",
-      700: "#a16207",
-      800: "#854d0e",
-      900: "#713f12",
-    },
-    lime: {
-      50: "#f7fee7",
-      100: "#ecfccb",
-      200: "#d9f99d",
-      300: "#bef264",
-      400: "#a3e635",
-      500: "#84cc16",
-      600: "#65a30d",
-      700: "#4d7c0f",
-      800: "#3f6212",
-      900: "#365314",
-    },
-    green: {
-      50: "#f0fdf4",
-      100: "#dcfce7",
-      200: "#bbf7d0",
-      300: "#86efac",
-      400: "#4ade80",
-      500: "#22c55e",
-      600: "#16a34a",
-      700: "#15803d",
-      800: "#166534",
-      900: "#14532d",
-    },
-    emerald: {
-      50: "#ecfdf5",
-      100: "#d1fae5",
-      200: "#a7f3d0",
-      300: "#6ee7b7",
-      400: "#34d399",
-      500: "#10b981",
-      600: "#059669",
-      700: "#047857",
-      800: "#065f46",
-      900: "#064e3b",
-    },
-    flamingo: {
-      50: "#f0fdfa",
-      100: "#ccfbf1",
-      200: "#99f6e4",
-      300: "#5eead4",
-      400: "#2dd4bf",
-      500: "#14b8a6",
-      600: "#0d9488",
-      700: "#0f766e",
-      800: "#115e59",
-      900: "#134e4a",
-    },
-    cyan: {
-      50: "#ecfeff",
-      100: "#cffafe",
-      200: "#a5f3fc",
-      300: "#67e8f9",
-      400: "#22d3ee",
-      500: "#06b6d4",
-      600: "#0891b2",
-      700: "#0e7490",
-      800: "#155e75",
-      900: "#164e63",
-    },
-    sky: {
-      50: "#f0f9ff",
-      100: "#e0f2fe",
-      200: "#bae6fd",
-      300: "#7dd3fc",
-      400: "#38bdf8",
-      500: "#0ea5e9",
-      600: "#0284c7",
-      700: "#0369a1",
-      800: "#075985",
-      900: "#0c4a6e",
-    },
-    blue: {
-      50: "#eff6ff",
-      100: "#dbeafe",
-      200: "#bfdbfe",
-      300: "#93c5fd",
-      400: "#60a5fa",
-      500: "#3b82f6",
-      600: "#2563eb",
-      700: "#1d4ed8",
-      800: "#1e40af",
-      900: "#1e3a8a",
-    },
-    indigo: {
-      50: "#eef2ff",
-      100: "#e0e7ff",
-      200: "#c7d2fe",
-      300: "#a5b4fc",
-      400: "#818cf8",
-      500: "#6366f1",
-      600: "#4f46e5",
-      700: "#4338ca",
-      800: "#3730a3",
-      900: "#312e81",
-    },
-    violet: {
-      50: "#f5f3ff",
-      100: "#ede9fe",
-      200: "#ddd6fe",
-      300: "#c4b5fd",
-      400: "#a78bfa",
-      500: "#8b5cf6",
-      600: "#7c3aed",
-      700: "#6d28d9",
-      800: "#5b21b6",
-      900: "#4c1d95",
-    },
-    purple: {
-      50: "#faf5ff",
-      100: "#f3e8ff",
-      200: "#e9d5ff",
-      300: "#d8b4fe",
-      400: "#c084fc",
-      500: "#a855f7",
-      600: "#9333ea",
-      700: "#7e22ce",
-      800: "#6b21a8",
-      900: "#581c87",
-    },
-    fuchsia: {
-      50: "#fdf4ff",
-      100: "#fae8ff",
-      200: "#f5d0fe",
-      300: "#f0abfc",
-      400: "#e879f9",
-      500: "#d946ef",
-      600: "#c026d3",
-      700: "#a21caf",
-      800: "#86198f",
-      900: "#701a75",
-    },
-    pink: {
-      50: "#fdf2f8",
-      100: "#fce7f3",
-      200: "#fbcfe8",
-      300: "#f9a8d4",
-      400: "#f472b6",
-      500: "#ec4899",
-      600: "#db2777",
-      700: "#be185d",
-      800: "#9d174d",
-      900: "#831843",
-    },
-    rose: {
-      50: "#fff1f2",
-      100: "#ffe4e6",
-      200: "#fecdd3",
-      300: "#fda4af",
-      400: "#fb7185",
-      500: "#f43f5e",
-      600: "#e11d48",
-      700: "#be123c",
-      800: "#9f1239",
-      900: "#881337",
-    },
-  };
-
-  let d1 = document.createElement("div");
-  d1.className = "grid grid-cols-1 gap-8";
-  colorspalette.appendChild(d1);
-
-  for (const key in colors) {
-    if (Object.hasOwnProperty.call(colors, key)) {
-      const colorelement = colors[key];
-
-      let d2 = document.createElement("div");
-      let d3row = document.createElement("div");
-      d3row.className = "flex flex-col space-y-3 text-xs";
-
-      let d31col = parseHTML(`<div class="w-8 shrink-0"><div class="h-10 flex flex-col justify-center"><div class="text-sm font-semibold text-slate-900 dark:text-slate-200">${key}</div></div></div>`);
-
-      let d32col = document.createElement("div");
-      d32col.className = "min-w-0 flex-1 grid grid-cols-5 2xl:grid-cols-10 gap-x-4 gap-y-3 2xl:gap-x-2";
-
-      for (const keychildren in colorelement) {
-        if (Object.hasOwnProperty.call(colorelement, keychildren)) {
-          const element = colorelement[keychildren];
-          var e = parseHTML(
-            `<div class="space-y-1.5"><button onclick="updateBody('${element}');" class="h-10 w-full rounded dark:ring-1 dark:ring-inset dark:ring-white/10" style="background-color:${element}"></button><div class="px-0.5 md:flex md:justify-between md:space-x-2 2xl:space-x-0 2xl:block"><div class="w-6 font-medium text-slate-900 2xl:w-full dark:text-slate-800">${keychildren}</div><div class="text-slate-500 font-mono lowercase dark:text-slate-400">${element}</div></div></div>`
-          );
-
-          d32col.appendChild(e);
-        }
-      }
-
-      // Append
-      d3row.appendChild(d31col);
-      d3row.appendChild(d32col);
-      d2.appendChild(d3row);
-      d1.appendChild(d2);
-    }
-  }
-
-  function parseHTML(html) {
-    var t = document.createElement("template");
-    t.innerHTML = html;
-    return t.content;
-  }
-</script>
-<script src="//unpkg.com/alpinejs" defer></script>
+{{template "_scripts" }}
 
 </html>

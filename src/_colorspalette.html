@@ -1,0 +1,58 @@
+{{define "_colorspalette"}}
+<div id="modal" class="hidden fixed z-40 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
+  aria-modal="true">
+  <div class="flex items-start justify-start min-h-screen pt-0 px-0 pb-0 sm:block sm:p-0">
+    <!--
+        Background overlay, show/hide based on modal state.
+  
+        Entering: "ease-out duration-300"
+          From: "opacity-0"
+          To: "opacity-100"
+        Leaving: "ease-in duration-200"
+          From: "opacity-100"
+          To: "opacity-0"
+      -->
+    <div class="fixed inset-0 bg-transparent transition-opacity" id="overlay" aria-hidden="true"></div>
+
+    <!-- This element is to trick the browser into centering the modal contents. -->
+
+    <!--
+        Modal panel, show/hide based on modal state.
+  
+        Entering: "ease-out duration-300"
+          From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          To: "opacity-100 translate-y-0 sm:scale-100"
+        Leaving: "ease-in duration-200"
+          From: "opacity-100 translate-y-0 sm:scale-100"
+          To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+      -->
+
+    <div
+      class="absolute inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-0 sm:align-middle sm:max-w-xl sm:w-full">
+      <div class="bg-white px-4 py-8">
+        <div class="flex sticky top-0 left-0 w-full">
+          <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Colors</h3>
+          <div class="flex-1 flex justify-end">
+            <button id="removestyle"
+              class="px-4 py-2 bg-viking-500 text-white font-medium text-sm leading-tight uppercase hover:bg-viking-400 focus:bg-viking-400 focus:outline-none focus:ring-0 active:bg-viking-400">
+              Remove style
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-2" id="colorspalette"></div>
+      </div>
+      <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <button type="button" onclick="updateModal();"
+          class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+          Deactivate
+        </button>
+        <button type="button" onclick="updateModal();"
+          class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{{end}}

@@ -25,21 +25,25 @@
 
 
         <div class="mt-5 flex-1 flex flex-col px-4">
-          <div class="mb-6">
-            <div class="relative"><button
-                class="focus-visible:outline-none focus-visible:ring flex items-center justify-between w-full px-3 py-[9px] rounded-lg bg-gray-800"
-                id="headlessui-menu-button-3" type="button" aria-haspopup="true" aria-expanded="false"><span
-                  class="text-sm font-medium text-white">React</span><svg xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-gray-400">
-                  <path fill-rule="evenodd"
-                    d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                    clip-rule="evenodd"></path>
-                </svg></button>
-              <div class="w-full" data-popper-reference-hidden="false" data-popper-escaped="false"
-                data-popper-placement="bottom-start"
-                style="position: absolute; inset: 0px auto auto 0px; transform: translate(0px, 44px);"></div>
-            </div>
-          </div>
+          <!-- DROPDOWN-->
+<div class="group inline-block relative pb-4">
+  <button class="bg-gray-300 text-gray-700 font-semibold w-full py-2 px-4 rounded inline-flex items-center justify-start">
+    <span class="mr-1 flex-1 text-left">Dropdown</span>
+    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+    </svg>
+  </button>
+  <ul x-data="{ items: ['One', 'Two', 'Three'] }" class="absolute text-gray-700 pt-2 group-hover:block hidden w-full rounded bg-transparent">
+    
+    <template x-for="(item, index) in items">
+      <li>
+        <a :class="index === items.length - 1 ? 'rounded-b' : index === 0 ? 'rounded-t' : ''" class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#" x-text="item"></a>
+      </li>
+    </template>
+
+  </ul>
+</div>
+          <!-- DROPDOWN END -->
           <nav class="flex-1  pb-4 space-y-0" x-data="{ menus: ['Dashboard', 'Clients', 'Users'] }">
 
             <template x-for="menu in menus">
@@ -70,14 +74,17 @@
     </div>
     <div class="md:pl-56 2lg:pl-64 flex flex-col flex-1">
       <main>
-        <div class="py-6">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+        <div class="py-6 px-6">
+          <div class=" mx-auto px-4 sm:px-6 md:px-8">
             <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
           </div>
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+          <div class=" mx-auto px-4 sm:px-6 md:px-8">
             <!-- Replace with your content -->
             <div class="py-4">
-              <div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
+              <div class="border-4 border-dashed border-gray-200 rounded-lg h-96" >
+                <pre
+                  class="language-html"><code class="language-html" id="token"></code></pre>
+              </div>
             </div>
             <!-- /End replace -->
           </div>
@@ -92,5 +99,7 @@
 
 </body>
 {{template "_scripts" }}
-
+<script type="text/javascript">
+  document.getElementById("token").innerText = JSON.stringify(parseJwt({{ .token }}), undefined, 2);
+</script>
 </html>

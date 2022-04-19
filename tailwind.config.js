@@ -4,6 +4,9 @@ module.exports = {
   mode: "jit",
   content: ["./src/**/*.{html,js}"],
   darkMode: "class",
+  variants: {
+    display: ["group-hover"]
+  },
   theme: {
     extend: {
       fontFamily: {

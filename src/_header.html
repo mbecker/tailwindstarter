@@ -27,8 +27,53 @@
           </li>
         </ul>
       </nav>
+
+      <!-- DROPDOWN ORGANIZATIONS -->
+      {{if .isAuthenticated}}
+<div class="z-40 relative -mr-1.5 sm:mr-0  lg:border-l lg:border-slate-200 lg:ml-6 lg:pl-6 dark:border-slate-200"
+  x-data="{ open: false, orgs: ['Org1', 'Org2', 'Org3'] }"
+  x-init="window.addEventListener('focus', event => { if (open &amp;&amp; !$el.contains(event.target)) open = false }, true)"
+  @click.away="open = false" @keydown.escape="open = false;$refs.toggle.focus()">
+  <button type="button" class="font-medium text-sm flex items-center outline-none" aria-expanded="true" x-ref="toggle"
+    @click="open = !open" :aria-expanded="open">
+    <span class="hidden sm:flex items-center dark:text-slate-200">
+      Organizations
+      <svg aria-hidden="true" width="8" height="6" fill="none" class="ml-2.5 text-gray-400 dark:text-slate-200">
+        <path d="M7 1.5l-3 3-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        </path>
+      </svg>
+    </span>
+    <span class="flex sm:hidden -my-1 w-8 h-8 rounded-lg items-center justify-center">
+      <svg aria-hidden="true" width="20" height="20" fill="none" class="text-gray-900">
+        <path d="M3.75 4.75h12.5M3.75 9.75h12.5M3.75 14.75h12.5" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </span>
+  </button>
+  <!-- Account Modal -->
+  <div x-show="open"
+    class="absolute top-full right-0 w-60 mt-3 -mr-0.5 sm:-mr-3.5 bg-white rounded-lg shadow-md ring-1 ring-gray-900 ring-opacity-5 font-normal text-sm text-gray-900 divide-y divide-gray-100">
+    <p class="py-3 px-3.5 truncate">
+      <span class="block mb-0.5 text-xs text-gray-500">Current Organization: Org1</span>
+    </p>
+    
+    <template x-for="(org, index) in orgs">
+    <div class="py-1.5 px-3.5">
+      <a href="/upgrade-team" class="group flex items-center py-1.5 hover:text-flamingo-600 font-semibold" x-text="org">
+        
+      </a>
+    </div>
+    </template>
+    
+  </div>
+</div>
+{{end}}
+      <!-- DROPDOWN END ORGANIZATIONS -->
+
       <!-- Account -->
       {{if .isAuthenticated}}
+
+              
       <div class="z-40 relative -mr-1.5 sm:mr-0  lg:border-l lg:border-slate-200 lg:ml-6 lg:pl-6 dark:border-slate-200"
         x-data="{ open: false }"
         x-init="window.addEventListener('focus', event => { if (open &amp;&amp; !$el.contains(event.target)) open = false }, true)"

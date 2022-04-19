@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html x-data="appData()">
 
 <head>
   <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 </head>
 
-<body class="bg-white flex flex-col min-h-screen" id="body" x-data="{ showColorPalette: false }">
+<body class="bg-white flex flex-col min-h-screen" :style="{ backgroundColor: bodyBackgroundColor }" id="body">
 
   {{template "_header" . }}
 

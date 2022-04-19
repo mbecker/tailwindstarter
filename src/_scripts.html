@@ -1,5 +1,6 @@
 {{define "_scripts"}}
-<script src="/dist/colors.js"></script>
+<script src="//unpkg.com/alpinejs" defer></script>
+<script src="/dist/cookie.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
 
@@ -28,17 +29,6 @@
   };
 
 
-  /* Add Colors Palette */
-  let colorspalette = document.getElementById("colorspalette");
-  addColors(colorspalette);
-  let modal = document.getElementById("modal");
-  function updateModal() {
-    if (modal.classList.contains("hidden")) {
-      modal.classList.remove("hidden");
-    } else {
-      modal.classList.add("hidden");
-    }
-  }
 </script>
-<script src="//unpkg.com/alpinejs" defer></script>
+<script src="/dist/app.js"></script>
 {{end}}

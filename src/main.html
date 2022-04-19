@@ -99,7 +99,4 @@
 
 </body>
 {{template "_scripts" }}
-<script type="text/javascript">
-  document.getElementById("token").innerText = JSON.stringify(parseJwt({{ .token }}), undefined, 2);
-</script>
 </html>
